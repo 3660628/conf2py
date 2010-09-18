@@ -12,8 +12,10 @@ settings.email_server='logging'
 settings.email_sender='example@example.com'
 settings.email_login=None
 settings.mailing_list=None
-settings.rpx_domain='web2py'
-settings.rpx_apikey=open('/Users/mdipierro/janrain_api_key.txt','r').read().strip()
+try:
+    settings.rpx_apikey=open('/Users/mdipierro/janrain_api_key.txt','r').read().strip()
+    settings.rpx_domain='web2py'
+except: pass
 
 settings.authorize_net=('cnpdev4289', 'SR2P8g4jdEn7vFLQ', True)
 settings.googlemap_key='ABQIAAAAT5em2PdsvF3z5onQpCqv0RTpH3CbXHjuCVmaTc5MkkU4wO1RRhQHEAKj2S9L72lEMpvNxzLVfJt6cg' # 127.0.0.1
