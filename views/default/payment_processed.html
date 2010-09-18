@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+
+<h2>Thank you! Payement processed</h2>
+
+<h3>Invoice number: {{=invoice}}</h3>
+
+<h3>Payment Amount: ${{=balance}}</h3>
+
+<h3>Payment datetime: {{=auth.user.payment_datetime}}</h3>
+
+{{=XML(items)}}

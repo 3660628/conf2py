@@ -1,0 +1,240 @@
+
+
+
+<!doctype html public "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd">
+  <!-- design by free css templates http://www.freecsstemplates.org released for free under a creative commons attribution 2.5 license  name       : throughout  description: a two-column, fixed-width design for 1024x768 screen resolutions. version    : 1.0 released   : 20100423 -->
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <title>
+        {{=response.title}}
+      </title>
+      {{include 'web2py_ajax.html'}}
+      <script type="text/javascript" src="{{=URL(r=request,c='static',f='throughout/jquery/jquery.slidertron-0.1.js')}}"></script>
+      <link href="{{=URL(r=request,c='static',f='throughout/style.css')}}" rel="stylesheet" type="text/css" media="screen" />
+      <style type="text/css">
+@import "{{=URL(r=request,c='static',f='throughout/slidertron.css')}}";
+</style>
+    </head>
+    <body>
+      <!-- end #header-wrapper -->
+      <div id="logo">
+        <h1>
+          <a href="#">
+            {{=response.title}}
+          </a>
+        </h1>
+        <p>
+          <em>
+            {{=response.subtitle}}
+          </em>
+        </p>
+      </div>
+      <div id="header">
+        <div id="menu">
+          {{=MENU(response.menu)}}
+        </div>
+        <!-- end #menu -->
+        <div id="search">
+          <form method="get" action="">
+            <fieldset>
+              <input type="text" name="s" id="search-text" size="15" />
+            </fieldset>
+          </form>
+        </div>
+        <!-- end #search -->
+      </div>
+      <!-- end #header -->
+      <hr />
+      <!-- end #logo -->
+      <div id="slideshow">
+        <!-- start -->
+        <div id="foobar">
+          <div id="col1">
+            <a href="#" class="previous">&nbsp;</a>
+          </div>
+          <div id="col2">
+            <div class="viewer">
+              <div class="reel">
+                <div class="slide"><img src="{{=URL(r=request,c='static',f='throughout/images')}}/img04.jpg" width="726" height="335" alt="" /><span>lorem ipsum dolor sit amet.</span></div>
+                <div class="slide"><img src="{{=URL(r=request,c='static',f='throughout/images')}}/img07.jpg" width="726" height="335" alt="" /><span>lorem ipsum dolor sit amet.</span></div>
+                <div class="slide"><img src="{{=URL(r=request,c='static',f='throughout/images')}}/img08.jpg" width="726" height="335" alt="" /><span>lorem ipsum dolor sit amet.</span></div>
+              </div>
+            </div>
+          </div>
+          <div id="col3">
+            <a href="#" class="next">&nbsp;</a>
+          </div>
+        </div>
+        <script type="text/javascript">
+	  $('#foobar').slidertron({
+	  viewerselector:			'.viewer',
+	  reelselector:			'.viewer .reel',
+	  slidesselector:			'.viewer .reel .slide',
+	  navpreviousselector:	        '.previous',
+	  navnextselector:		'.next',
+	  navfirstselector:		'.first',
+	  navlastselector:		'.last'
+	  });
+	</script>
+        <!-- end -->
+      </div>
+      <div id="page">
+        <div id="page-bgtop">
+          <div id="content">
+            <div class="post">
+              <p class="meta">
+                <span class="date">
+                  sunday, april 26, 2009
+                </span>
+                7:27 am posted by
+                <a href="#">someone</a>
+              </p>
+              <h2 class="title">
+                <a href="#">welcome to throughout</a>
+              </h2>
+              <div class="entry">
+                <p>
+                  this is
+                  <strong>
+                    throughout
+                  </strong>,
+                   a free, fully standards-compliant css template designed by
+                  <a href="http://www.freecsstemplates.org/">free css templates</a>.
+                    the slideshow uses photos from
+                  <a href="http://www.pdphoto.org">
+                    pdphoto.org
+                  </a>
+                  and is powered by slidertron (a jquery plugin by
+                  <a href="http://www.nodethirtythree.com/">nodethirtythree</a>
+                  ). this free template is released under a
+                  <a href="http://creativecommons.org/licenses/by/3.0/">creative commons attributions</a>
+                  license, so you’re pretty much free to do whatever you want with it  (even use it commercially) provided you keep the links in the footer  intact. aside from that, have fun with it :)
+                </p>
+              </div>
+              <div>
+                <a href="#" class="links">view full story</a>
+              </div>
+            </div>
+            <div class="post">
+              <p class="meta">
+                <span class="date">
+                  sunday, april 26, 2009
+                </span>
+                7:27 am posted by
+                <a href="#">someone</a>
+              </p>
+              <h2 class="title">
+                <a href="#">lorem ipsum sed aliquam</a>
+              </h2>
+              <div class="entry">
+                <p>
+                  <img src="{{=URL(r=request,c='static',f='throughout/images')}}/img11.jpg" width="560" height="270" alt="" />
+                  donec ipsum. proin imperdiet est. phasellus
+                  <a href="#">dapibus semper urna</a>.
+                   pellentesque ornare, orci in consectetuer hendrerit, urna elit eleifend nunc, ut consectetuer nisl felis ac diam. etiam non felis.
+                </p>
+              </div>
+              <div>
+                <a href="#" class="links">view full story</a>
+              </div>
+            </div>
+          </div>
+          <!-- end #content -->
+          <div id="sidebar">
+            <ul>
+              <li>
+                <h2>
+                  aliquam tempus
+                </h2>
+                <p>
+                  mauris vitae nisl nec metus placerat perdiet est. phasellus dapibus semper urna. pellentesque ornare, orci in consectetuer hendrerit, volutpat.
+                </p>
+              </li>
+              <li>
+                <h2>
+                  pellenteque ornare
+                </h2>
+                <ul>
+                  <li>
+                    <a href="#">nec metus sed donec</a>
+                  </li>
+                  <li>
+                    <a href="#">magna lacus bibendum mauris</a>
+                  </li>
+                  <li>
+                    <a href="#">velit semper nisi molestie</a>
+                  </li>
+                  <li>
+                    <a href="#">eget tempor eget nonummy</a>
+                  </li>
+                  <li>
+                    <a href="#">nec metus sed donec</a>
+                  </li>
+                  <li>
+                    <a href="#">velit semper nisi molestie</a>
+                  </li>
+                  <li>
+                    <a href="#">eget tempor eget nonummy</a>
+                  </li>
+                  <li>
+                    <a href="#">nec metus sed donec</a>
+                  </li>
+                </ul>
+              </li>
+              <li>
+                <h2>
+                  turpis nulla
+                </h2>
+                <ul>
+                  <li>
+                    <a href="#">nec metus sed donec</a>
+                  </li>
+                  <li>
+                    <a href="#">magna lacus bibendum mauris</a>
+                  </li>
+                  <li>
+                    <a href="#">velit semper nisi molestie</a>
+                  </li>
+                  <li>
+                    <a href="#">eget tempor eget nonummy</a>
+                  </li>
+                  <li>
+                    <a href="#">nec metus sed donec</a>
+                  </li>
+                  <li>
+                    <a href="#">nec metus sed donec</a>
+                  </li>
+                  <li>
+                    <a href="#">magna lacus bibendum mauris</a>
+                  </li>
+                  <li>
+                    <a href="#">velit semper nisi molestie</a>
+                  </li>
+                  <li>
+                    <a href="#">eget tempor eget nonummy</a>
+                  </li>
+                  <li>
+                    <a href="#">nec metus sed donec</a>
+                  </li>
+                </ul>
+              </li>
+            </ul>
+          </div>
+          <!-- end #sidebar -->
+          <div style="clear: both;">
+            &nbsp;
+          </div>
+        </div>
+        <!-- end #page -->
+      </div>
+      <div id="footer">
+        <p>
+          copyright (c) 2008 sitename.com. all rights reserved. design by
+          <a href="http://www.freecsstemplates.org/">free css templates</a>.
+        </p>
+      </div>
+      <!-- end #footer -->
+    </body>
+  </html>
+  

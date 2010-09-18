@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+
+<script>
+jQuery(document).ready(function(){jQuery('#map').html('<iframe src="{{=settings.calendar_url}}" style="width:100%; height:100%"></iframe>');});
+</script>
+
+{{=plugin_wiki.embed('agenda')}}

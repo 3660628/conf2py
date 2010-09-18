@@ -1,0 +1,20 @@
+{{extend 'layout.html'}}
+
+<h1>Ready to checkout?</h1>
+
+<h2>Your total balance: ${{=balance}}</h2>
+
+<ul>
+<li>{{="$%(payment_amount)s for %(first_name)s %(last_name)s" % auth.user}}</li>
+{{for user in users:}}
+<li>{{="$%(payment_amount)s for %(first_name)s %(last_name)s" % user}}
+{{=A('[edit]',_href=URL('register_other',args=user.id))}}
+</li>
+{{pass}}
+</ul>
+
+{{if message:}}
+<h2 style="background-color: red">{{=message}}</h2>
+{{pass}}
+
+{{=form}}

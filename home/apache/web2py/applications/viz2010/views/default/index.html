@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+
+<h2>History</h2>
+
+This workshop is the sixt one in a series of nearly annual meetings among researchers in the field of scientific visualization and end-users from application areas with needs for high-end visualizations of their data. 
+
+<h2>Overview</h2>
+
+Open issues in visualization with special concentration on applications in astrophysics, numerical relativity, computational fluid dynamics and high-performance computing. 
+
+<h2>Organizing Committee</h2>
+
+{{=UL(*[LI(x) for x in """
+Werner Benger, Center for Computation & Technology at Louisiana State University (CCT/LSU), Baton Rouge, Louisiana, USA
+Andreas Gerndt, German Aerospace Center, Braunschweig, Germany
+Simon Su, Princeton University, New Jersey, USA
+Wolfram Schoor, EADS Deutschland GmbH, Manching, Germany
+Michael Koppitz, Max-Planck Institute for Gravitational Physics, Potsdam, Germany
+Wolfgang Kapferer, Institute for Astro- and Particle Physics, Innsbruck, Austria
+Hans-Peter Bischof, Rochester Institute of Technology, USA
+Burlen Loring, UC Davis
+Massimo Di Pierro, U DePaul
+The organization committee can be reached at vizworkshop2010(at)cct.lsu.edu .
+""".split('\n') if x.strip()])}}

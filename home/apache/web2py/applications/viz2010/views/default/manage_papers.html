@@ -1,0 +1,33 @@
+{{extend 'layout.html'}}
+{{def short(x): return x if len(x)<=50 else x[:50]+'...'}}
+<h2>Papers</h2>
+
+{{if papers_all:}}
+<h3>All Papers</h3>
+{{for p in papers_all:}}
+<div class="box">
+  <a href="{{=URL(r=request,f='manage_paper',args=p.id)}}">{{=short(p.title)}}</a> by {{=p.created_by.last_name}} &gt; {{=p.status}}
+</div>
+{{pass}}
+{{pass}}
+
+{{if papers_to_review:}}
+<h3>Papers to review</h3>
+{{for p in papers_to_review:}}
+<div class="box">
+  <a href="{{=URL(r=request,f='manage_paper',args=p.id)}}">{{=short(p.title)}}</a> by {{=p.created_by.last_name}} &gt; {{=p.status}}
+</div>
+{{pass}}
+{{pass}}
+
+{{if papers_mine:}}
+<h3>My Papers</h3>
+{{for p in papers_mine:}}
+<div class="box">
+  <a href="{{=URL(r=request,f='manage_paper',args=p.id)}}">{{=short(p.title)}}</a> by {{=p.created_by.last_name}} &gt; {{=p.status}}
+</div>
+{{pass}}
+{{pass}}
+
+<h3>Submit a paper</h3>
+{{=form}}

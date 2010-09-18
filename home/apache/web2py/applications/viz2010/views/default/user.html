@@ -1,0 +1,12 @@
+{{extend 'layout.html'}}
+<h2>{{=T( request.args(0).replace('_',' ').capitalize() )}}</h2>
+{{if request.args(0)=='register':}}
+<i>Uncheck "Plan to attend workshop" if you are registering as a reviewer.
+If you later decide to attend you will be able to edit your profile.</i>
+{{pass}}
+
+{{=form}}
+{{if request.args(0)=='login':}}
+<a href="{{=URL(r=request,args='register')}}">register</a><br />
+<a href="{{=URL(r=request,args='request_reset_password')}}">lost password</a><br />
+{{pass}}

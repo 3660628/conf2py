@@ -1,0 +1,188 @@
+<!doctype html public "-//w3c//dtd xhtml 1.0 strict//en" "http://www.w3.org/tr/xhtml1/dtd/xhtml1-strict.dtd">
+  <!-- design by free css templates http://www.freecsstemplates.org released for free under a creative commons attribution 2.5 license  name       : throughout  description: a two-column, fixed-width design for 1024x768 screen resolutions. version    : 1.0 released   : 20100423  -->
+  <html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+      <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+      <title>
+        {{=response.title}}
+      </title>
+      <meta name="keywords" content="Visualizaiton, Workshop, Ovbergugl, Austria" />
+      <meta name="description" content="6th High End Visualization Workshop" />
+      {{include 'web2py_ajax.html'}}
+      <script type="text/javascript" src="{{=URL(r=request,c='static',f='throughout/jquery/jquery.slidertron-0.1.js')}}"></script>
+
+      <link href="{{=URL(r=request,c='static',f='throughout/style.css')}}" rel="stylesheet" type="text/css" media="screen" />
+      <style type="text/css">
+@import "{{=URL(r=request,c='static',f='throughout/slidertron.css')}}";
+</style>
+    </head>
+    <body>      
+      <!-- end #header-wrapper -->
+      <div id="logo">
+        <h1>
+          <a href="#">{{=response.title}}</a>
+        </h1>
+        <p>
+          <em>
+	    {{=response.subtitle}}	    
+          </em>	  
+        </p>	
+      </div>      
+      <div id="header">
+        <div id="menu">
+	  {{=MENU(response.menu)}}
+        </div>
+        <!-- end #menu -->
+        <div id="search">
+          <form method="get" action="http://www.google.com/search">
+            <fieldset>
+              <input type="text" name="q" id="search-text" size="15" />
+	      <input type="hidden" name="hl" value="en" />
+	      <input type="hidden" name="ie" value="ISO-8859-1" />
+	      <input type="hidden" name="sitesearch" value="{{=request.env.http_host}}" />
+            </fieldset>
+          </form>
+        </div>
+        <!-- end #search -->
+      </div>
+      <!-- end #header -->
+      <hr />
+      <!-- end #logo -->
+      {{if request.controller=='default' and request.function in ('index','attendees','directions','agenda'):}}
+      <div id="slideshow">
+        <!-- start -->
+	{{if request.function=='index':}}
+        <div id="foobar">
+          <div id="col1">
+            <a href="#" class="previous">
+              &nbsp;
+            </a>
+          </div>
+          <div id="col2">
+            <div class="viewer">
+              <div class="reel">
+		{{slideshows=db(db.slideshow.active==True).select()}}
+		{{for slideshow in slideshows:}}
+                <div class="slide">
+                  <img src="{{=URL('download',args=slideshow.image)}}" 
+		       width="726" height="335" alt="" />
+                  <span>{{=slideshow.caption}}</span>
+                </div>
+		{{pass}}
+		{{if not slideshows:}}
+                <div class="slide">
+                  <img src="{{=URL('static','slideshow/1.jpg')}}" 
+		       width="726" height="335" alt="" />
+                  <span>Pizza</span>
+                </div>
+                <div class="slide">
+                  <img src="{{=URL('static','slideshow/2.jpg')}}" 
+		       width="726" height="335" alt="" />
+                  <span>Pasta</span>
+                </div>
+                <div class="slide">
+                  <img src="{{=URL('static','slideshow/3.jpg')}}" 
+		       width="726" height="335" alt="" />
+                  <span>Desserts</span>
+                </div>
+		{{pass}}
+              </div>
+            </div>
+          </div>
+          <div id="col3">
+            <a href="#" class="next">
+              &nbsp;
+            </a>	    
+          </div>
+        </div>
+        <script type="text/javascript">
+
+	  $('#foobar').slidertron({
+	  viewerSelector:		'.viewer',
+	  reelSelector:			'.viewer .reel',
+	  slidesSelector:		'.viewer .reel .slide',
+	  navPreviousSelector:	        '.previous',
+	  navNextSelector:		'.next',
+	  navFirstSelector:		'.first',
+	  navLastSelector:		'.last'
+	  });
+	  
+	</script>
+	{{else:}}
+	<div id="map_container">
+	<div id="map"></div>
+	</div>
+	{{pass}}
+        <!-- end -->	
+      </div>
+      {{pass}}
+      <div id="page">
+        <div id="page-bgtop">
+          <div id="content">
+	    <div class="flash">{{=response.flash}}</div>
+            <div class="post">
+	      {{include}}
+            </div>
+          </div>
+          <!-- end #content -->
+	  {{if request.controller!='plugin_wiki':}}
+          <div id="sidebar">
+            <ul>
+              <li>
+                <h2>
+                  Authentication
+                </h2>
+                <ul>
+		  {{if auth.user:}}
+		  <li>Welcome {{=A(auth.user.first_name,_href=URL('user/profile'))}}
+                    {{if manager:}}[M]{{pass}}{{if editor:}}[E]{{pass}}
+		  </li>
+		  <li>{{=A('logout',_href=URL('user/logout'))}}</li>
+		  <li>{{=A('edit profile',_href=URL('user/profile'))}}</li>
+		  {{if not settings.rpx_domain:}}
+		  <li>{{=A('change password',_href=URL('user/change_password'))}}</li>
+		  {{pass}}
+		  <li>{{=A('register other users',_href=URL('register_other'))}}</li>
+		  <li>{{=A('submit and manage papers',_href=URL('manage_papers'))}}</li>
+		  {{if not auth.user.paid:}}
+		  <li>{{=A('pay ($%s)' % auth.user.payment_amount,
+		    _href=URL('pay'))}}</li>
+		  {{pass}}
+		  {{else:}}
+		  <li>{{=A('login',_href=URL('user/login'))}}</li>
+		  <li>{{=A('register',_href=URL('user/register'))}}</li>
+		  <li>{{=A('lost password?',_href=URL('user/request_reset_password'))}}</li>		  
+		  {{pass}}
+                </ul>
+	      </li>
+	      {{if auth.user and auth.user.manager:}}
+	      <li>
+		<h2>Management</h2>
+		<ul>
+		  <li>{{=A('edit slideshow',_href=URL('slideshow'))}}</li>
+		  <li>{{=A('manage users',_href=URL('manage_users'))}}</li>
+		</ul>
+	      </li>
+	      {{pass}}
+              <li>
+		{{=plugin_wiki.embed('sidebar')}}
+              </li>
+            </ul>
+          </div>
+	  {{else:}}
+	  <script>jQuery('.post').css('width','840px');</script>
+	  {{pass}}
+          <!-- end #sidebar -->
+          <div style="clear: both;">
+            &nbsp;
+          </div>
+        </div>
+        <!-- end #page -->
+      </div>
+      <div id="footer">
+	{{=plugin_wiki.render(settings.footer)}}
+      </div>
+      <!-- end #footer -->
+    </body>
+  </html>
+

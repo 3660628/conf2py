@@ -1,0 +1,47 @@
+{{extend 'layout.html'}}
+
+  <script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key={{=settings.googlemap_key}}" type="text/javascript"></script>
+    <script type="text/javascript">
+    //<![CDATA[
+    function load() {
+      if (GBrowserIsCompatible()) {
+        var map = new GMap2(document.getElementById("map"));
+        map.addControl(new GSmallMapControl());
+        map.addControl(new GMapTypeControl());
+        map.setCenter(new GLatLng(0,0),1);
+        // Create a base icon for all of our markers that specifies the
+        // shadow, icon dimensions, etc.
+        var blueIcon = new GIcon();
+        blueIcon.image = "http://www.google.com/intl/en_us/mapfiles/ms/micons/red-dot.png";
+        blueIcon.shadow = "http://www.google.com/mapfiles/shadow50.png";
+        blueIcon.iconSize = new GSize(37, 34);
+        blueIcon.shadowSize = new GSize(37, 34);
+        blueIcon.iconAnchor = new GPoint(9, 34);
+        blueIcon.infoWindowAnchor = new GPoint(9, 2);
+        blueIcon.infoShadowAnchor = new GPoint(18, 14);
+
+        function createMarker(point, i, message) {
+           // Set up our GMarkerOptions object
+           if(i==0) markerOptions = { icon:blueIcon };
+           else markerOptions= {}
+           var marker = new GMarker(point, markerOptions);
+           GEvent.addListener(marker, "click", function() {
+             marker.openInfoWindowHtml(message);
+           });
+           return marker;
+        }
+          var point = new GLatLng(46.874451,11.027355);
+          map.addOverlay(createMarker(point, 0, "Obergurgl, Austria"));
+     }
+    }
+    //]]>
+    </script>
+
+    <script>
+      load();
+    </script>
+
+
+<h2>Directions</h2>
+
+{{=plugin_wiki.embed('directions')}}
