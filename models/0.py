@@ -17,11 +17,10 @@ try:
     settings.rpx_domain='web2py'
 except: pass
 
-settings.authorize_net=('cnpdev4289', 'SR2P8g4jdEn7vFLQ', True)
+settings.authorize_net=('cnpdev4289', 'SR2P8g4jdEn7vFLQ', True) # sandbox
 settings.googlemap_key='ABQIAAAAT5em2PdsvF3z5onQpCqv0RTpH3CbXHjuCVmaTc5MkkU4wO1RRhQHEAKj2S9L72lEMpvNxzLVfJt6cg' # 127.0.0.1
-settings.googlemap_key='ABQIAAAAT5em2PdsvF3z5onQpCqv0RQKjFa1yJagLmzGcZ4UA6Ce9BDiWhSxvi4hSIQsWixy4LcFJtTrQTFuhg' # web2py.com
-settings.googlemap_key='ABQIAAAAT5em2PdsvF3z5onQpCqv0RQPCUEzYgiop56CdyBwu8qVi8fMhxQiCxk_q8hn8KuACpXbUW0O92B1gQ' # http://vizworkshop.cct.lsu.edu
 settings.calendar_url="http://www.google.com/calendar/embed?src=aDg4cDN0bDJmY285MjFkcGhiYnZjcDBrdGtAZ3JvdXAuY2FsZW5kYXIuZ29vZ2xlLmNvbQ"
+
 settings.sections=('2010','2009','2008','2007')
 settings.bibtex="""@InProceedings{hevw%(id)s,
      author    = {%(authors)s}
