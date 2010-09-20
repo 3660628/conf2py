@@ -1,7 +1,12 @@
-Conf2py is an Open Source Conference Management Software
+Conf2py is an Open Source Conference Management Software written in Python
+
 License is GPL2
 Developed by Massimo Di Pierro
 Support provided by MetaCryption LLC
+
+A slideshow presentation:
+
+  http://www.slideshare.net/mdipierro/conf2py
 
 Download as a web2py app (includes source): 
 
@@ -10,10 +15,6 @@ Download as a web2py app (includes source):
 Source only from google code:
 
   hg clone https://conf2py.googlecode.com/hg/ conf2py  
-
-A slideshow presentation:
-
-  http://www.slideshare.net/mdipierro/conf2py
 
 BACKGROUND
 ==========
