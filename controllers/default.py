@@ -121,7 +121,7 @@ def show_paper():
 def manage_papers():
     db.paper.authors.default = '%(first_name)s %(last_name)s' % auth.user
     form=crud.create(db.paper,next='manage_paper/[id]')
-    papers_all = db(db.paper.id!=auth.user_id).select() if editor else []
+    papers_all = db(db.paper.created_by!=auth.user_id).select() if editor else []
     papers_mine = db(db.paper.created_by==auth.user_id).select()
     papers_to_review =db(db.paper.id.belongs(db(db.assignment.reviewer==auth.user_id)._select(db.assignment.id))).select()
     return dict(papers_all=papers_all,papers_mine=papers_mine,papers_to_review=papers_to_review, form=form)
