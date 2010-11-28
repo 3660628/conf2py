@@ -110,7 +110,7 @@ def payment_processed():
     return dict(request.vars)
 
 def list_papers():
-    papers=db(db.paper.status=='Accepted').select(orderby=db.paper.section|db.paper.authors)
+    papers=db(db.paper.status.startswith('accepted')).select(orderby=db.paper.section|db.paper.authors)
     return dict(papers=papers)
 
 def show_paper():
@@ -151,7 +151,8 @@ def manage_paper():
     def email_users(form):
         k = int(form.vars.message_type)
         if k==11:
-            paper.update_record(file=form.vars.file,status=paper.status+' S:')
+            if form.vars.file and form.vars.file.endswith('.pdf'):
+                paper.update_record(file=form.vars.file,status=paper.status)
         elif k==23:
             paper.update_record(status='Accepted')
         elif k==24:
